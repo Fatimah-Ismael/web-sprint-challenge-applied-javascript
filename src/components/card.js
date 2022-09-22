@@ -17,9 +17,40 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+// CREATE ELEMENT
+const card = document.createElement('div');
+const headline = document.createElement('div');
+const author = document.createElement('div');
+const imgContainer = document.createElement('div');
+const img = document.createElement('img');
+const span = document.createElement('span');
+
+//CLASS LIST
+card.classList.add('card');
+headline.classList.add('headline');
+author.classList.add('author');
+imgContainer.classList.add('img-container');
+
+// ATTRIBUTES
+img.src = article.authorPhoto;
+span.textContent = article.authorName;
+headline.textContent = article.headline;
+
+//APPEND
+card.appendChild(headline);
+card.appendChild(author);
+author.appendChild(imgContainer);
+imgContainer.appendChild(img);
+author.appendChild(span);
+
+card.addEventListener('click', ()=> {
+  console.log(headline.textContent)
+})
+return card;
 }
 
-const cardAppender = (selector) => {
+const cardAppender = async (selector) => {
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
@@ -28,16 +59,11 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-}
-//test('[6] fetches topics and appends the correct tabs to the DOM', async () => {
-  //64 |     for (
-export { Card, cardAppender }
-/*
- test('[7] returns a card with the correct headline (element, attrs and text)', () => {
-    > 76 |     expect(card.querySelector('div.card>div.headline').textContent).toMatch(/foo/i)
-         |                 ^
-      77 |   })
-      78 |   test('[8] returns a card with the correct author (element, attrs and text)', () => {
-      79 |     expect(card.querySelector('div.card>div.author>span').textContent).toMatch(/bar/i)
+  const res = await axios.get('https://lambda-times-api.herokuapp.com/articles')
+  const articles = Object.values(res.data.articles).flat()
+  const container = document.querySelector(selector)
+  articles.forEach(article => container.appendChild(Card(article)))
 
-*/
+}
+
+export { Card, cardAppender }
