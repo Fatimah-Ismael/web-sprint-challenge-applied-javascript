@@ -1,3 +1,5 @@
+import { javascript } from "webpack";
+
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -13,6 +15,29 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+const labelTopics = document.createElement('div');
+const labelJavascript = document.createElement('div');
+const labelBootstrap = document.createElement('div');
+const labelTechnology = document.createElement('div');
+
+//CREATE HEIRARCHY
+labelTopics.appendChild(labelJavascript);
+labelTopics.appendChild(labelBootstrap);
+labelTopics.appendChild(labelTechnology);
+
+//ADD TEXT
+labelJavascript.textContent = javascript;
+labelBootstrap.textContent = bootstrap; 
+labelTechnology.textContent = technology; 
+
+//ADD CLASS NAME
+labelTopics.classList.add('topics');
+labelJavascript.classList.add('tab');
+labelBootstrap.classList.add('tab');
+labelTechnology.classList.add('tab');
+
+return labelTopics;
+
 }
 
 const tabsAppender = (selector) => {
@@ -23,6 +48,8 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+
+
 }
 
 export { Tabs, tabsAppender }

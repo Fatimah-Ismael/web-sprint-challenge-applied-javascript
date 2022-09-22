@@ -29,5 +29,15 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
 }
-
+//test('[6] fetches topics and appends the correct tabs to the DOM', async () => {
+  //64 |     for (
 export { Card, cardAppender }
+/*
+ test('[7] returns a card with the correct headline (element, attrs and text)', () => {
+    > 76 |     expect(card.querySelector('div.card>div.headline').textContent).toMatch(/foo/i)
+         |                 ^
+      77 |   })
+      78 |   test('[8] returns a card with the correct author (element, attrs and text)', () => {
+      79 |     expect(card.querySelector('div.card>div.author>span').textContent).toMatch(/bar/i)
+
+*/
