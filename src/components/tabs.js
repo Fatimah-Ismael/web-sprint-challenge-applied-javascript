@@ -17,25 +17,18 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
-  
 
 const labelTopics = document.createElement('div');
-
 topics.forEach((linkText) => {
   const link = document.createElement('div');
   labelTopics.appendChild(link);
   link.textContent = linkText;
 });
-
-
-
 //ADD CLASS NAME
 labelTopics.classList.add('topics');
-
-
 return labelTopics;
-}
 
+}
 
 const tabsAppender = (selector) => {
   // TASK 4
@@ -46,7 +39,14 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 
-  }
 
+  axios.get(`http://localhost:5001/api/topics`)
+  .then(resp => {
+    console.log(resp.data);
+    document.querySelector('.tab').appendChild(tabsAppender(resp.data));
+  })
+  .catch(err => console.error(err))
+}
 
+ 
 export { Tabs, tabsAppender }
